@@ -1,24 +1,29 @@
 <script>
+
 export default {
-  data() {
-    return {
-      name: 'John Doe',
-      status: 'test',
-      tasks: [
-        'Task 1',
-        'Task 2',
-        'Task 3'
-      ],
-      link: 'https://www.google.com'
-    }
-  },
-  methods: {
-    toggleStatus() {
-      if(this.status === 'active') {
-        this.status = 'inactive'
+  setup() {
+    const name = 'John Doe';
+    const status = 'active';
+    const tasks = [
+      'Task 1',
+      'Task 2',
+      'Task 3'
+    ];
+    const link = 'https://www.google.com';
+    const toggleStatus = () => {
+      if (status === 'active') {
+        return 'inactive';
       } else {
-        this.status = 'active'
+        return 'active';
       }
+    }
+
+    return {
+      name,
+      status,
+      tasks,
+      link,
+      toggleStatus
     }
   }
 }
@@ -32,7 +37,7 @@ export default {
 
   <h3>Tasks</h3>
   <ul>
-    <li v-for="task in tasks" :key="task">{{ task }}</li>    
+    <li v-for="task in tasks" :key="task">{{ task }}</li>
   </ul>
 
   <a :href="link" target="_blank">Go to Google</a> <br />
@@ -44,6 +49,4 @@ export default {
   <button @click="toggleStatus">Toggle @click</button>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
