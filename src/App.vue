@@ -3,7 +3,12 @@ export default {
   data() {
     return {
       name: 'John Doe',
-      status: 'test'
+      status: 'test',
+      tasks: [
+        'Task 1',
+        'Task 2',
+        'Task 3'
+      ]
     }
   }
 }
@@ -17,7 +22,7 @@ export default {
 
   <h3>Tasks</h3>
   <ul>
-    
+    <li v-for="task in tasks">{{ task }}</li>    
   </ul>
 </template>
 
