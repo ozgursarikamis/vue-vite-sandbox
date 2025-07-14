@@ -38,7 +38,10 @@ export default {
   <a :href="link" target="_blank">Go to Google</a> <br />
   <a v-bind:href="link">Go to Google (v-bind)</a>
 
-  <button v-on:click="toggleStatus()">Toggle Status</button>
+  <br>
+  <br>
+  <button v-on:click="toggleStatus()">Toggle Status</button> <br>
+  <button @click="toggleStatus">Toggle @click</button>
 </template>
 
 <style scoped>
