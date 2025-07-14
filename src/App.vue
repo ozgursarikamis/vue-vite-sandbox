@@ -8,7 +8,8 @@ export default {
         'Task 1',
         'Task 2',
         'Task 3'
-      ]
+      ],
+      link: 'https://www.google.com'
     }
   }
 }
@@ -24,6 +25,9 @@ export default {
   <ul>
     <li v-for="task in tasks" :key="task">{{ task }}</li>    
   </ul>
+
+  <a :href="link" target="_blank">Go to Google</a> <br />
+  <a v-bind:href="link">Go to Google (v-bind)</a>
 </template>
 
 <style scoped>
