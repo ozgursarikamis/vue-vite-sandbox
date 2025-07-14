@@ -22,7 +22,7 @@ export default {
 
   <h3>Tasks</h3>
   <ul>
-    <li v-for="task in tasks">{{ task }}</li>    
+    <li v-for="task in tasks" :key="task">{{ task }}</li>    
   </ul>
 </template>
 
