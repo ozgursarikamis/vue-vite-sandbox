@@ -1,20 +1,21 @@
 <script>
+import { ref } from 'vue';
 
 export default {
   setup() {
-    const name = 'John Doe';
-    const status = 'active';
-    const tasks = [
+    const name = ref('John Doe');
+    const status = ref('active');
+    const tasks = ref([
       'Task 1',
       'Task 2',
       'Task 3'
-    ];
-    const link = 'https://www.google.com';
+    ]);
+    const link = ref('https://www.google.com');
     const toggleStatus = () => {
-      if (status === 'active') {
-        return 'inactive';
+      if (status.value === 'active') {
+        status.value = 'inactive';
       } else {
-        return 'active';
+        status.value = 'active';
       }
     }
 
