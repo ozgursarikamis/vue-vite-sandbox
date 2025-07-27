@@ -1,7 +1,4 @@
-<script setup>
-import HomeView from '../views/Home.vue';
-
-</script>
+<script setup></script>
 
 <template>
   <RouterLink to="/">Home</RouterLink> | 
