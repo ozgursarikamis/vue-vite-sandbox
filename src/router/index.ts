@@ -40,17 +40,18 @@ const routes: Array<RouteRecordRaw> = [
                 path: 'lessons',
                 name: 'CourseLessons',
                 component: CourseLessons,
-                beforeEnter: (to, from, next) => {
-                    console.log({ to, from, next });
+                // beforeEnter: (to, from, next) => {
+                //     console.log({ to, from, next });
 
-                    const { isAuthenticated } = useAuth();
+                //     const { isAuthenticated } = useAuth();
 
-                    if (isAuthenticated.value) {
-                        next();
-                    } else {
-                        next('/login')
-                    }
-                }
+                //     if (isAuthenticated.value) {
+                //         next();
+                //     } else {
+                //         next('/login')
+                //     }
+                // },
+                meta: { requiresAuth: true }
             }
         ]
     },
@@ -69,6 +70,17 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
     history: createWebHistory(),
     routes
+});
+
+// Add global guard:
+router.beforeEach((to, from, next) => {
+    const { isAuthenticated } = useAuth();
+
+    if(to.meta.requiresAuth && !isAuthenticated.value) {
+        next('/login');
+    } else {
+        next();
+    }
 });
 
 export default router;
