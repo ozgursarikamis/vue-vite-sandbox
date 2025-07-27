@@ -23,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: '/courses/:id',
-        name: 'Course',
+        name: 'CourseDetail',
         component: CourseDetail,
         props: true  // 💡 enables auto-passing of route params as props
     },
