@@ -7,10 +7,9 @@ const courses = [
 </script>
 <template>
     Courses
-
     <ul>
         <li v-for="course in courses" :key="course.id">
-            <RouterLink :to="{ name: 'CourseDetail', params: { id: course.id } }">
+            <RouterLink :to="{ name: 'CourseLayout', params: { id: course.id } }">
                 {{ course.title }}
             </RouterLink>
         </li>

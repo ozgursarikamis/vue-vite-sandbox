@@ -3,7 +3,9 @@ import Home from "../views/Home.vue";
 import About from "../views/About.vue";
 import NotFound from "../views/NotFound.vue";
 import Courses from "../views/Courses.vue";
-import CourseDetail from "../views/CourseDetail.vue";
+import CourseLayout from "../views/CourseLayout.vue";
+import CourseOverview from "../views/CourseOverview.vue";
+import CourseLessons from "../views/CourseLessons.vue";
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -16,16 +18,28 @@ const routes: Array<RouteRecordRaw> = [
         name: 'About',
         component: About
     },
-    {
-        path: '/courses',
-        name: 'Courses',
-        component: Courses
+    { 
+        path: '/courses', 
+        name: 'Courses', 
+        component: Courses 
     },
     {
         path: '/courses/:id',
-        name: 'CourseDetail',
-        component: CourseDetail,
-        props: true  // 💡 enables auto-passing of route params as props
+        name: 'CourseLayout',
+        component: CourseLayout,
+        props: true,  // 💡 enables auto-passing of route params as props
+        children: [
+            {
+                path: '',
+                name: 'CourseOverview',
+                component: CourseOverview
+            },
+            {
+                path: 'lessons',
+                name: 'CourseLessons',
+                component: CourseLessons
+            }
+        ]
     },
     {
         path: '/:catchAll(.*)',
