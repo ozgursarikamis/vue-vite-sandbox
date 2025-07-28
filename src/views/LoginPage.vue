@@ -1,13 +1,16 @@
 <script setup>
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useAuth } from '../composables/useAuth';
 
 const { login } = useAuth();
 const router = useRouter();
+const route = useRoute();
 
 function loginAndRedirect() {
     login();
-    router.replace('/courses/101/lessons'); // or remember intended route later
+
+    const redirectTo = route.query.redirect || '/';
+    router.replace(redirectTo);
 }
 </script>
 
