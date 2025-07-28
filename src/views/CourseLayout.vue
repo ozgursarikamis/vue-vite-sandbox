@@ -7,21 +7,28 @@ const { id, course, loading, error } = useCourseData();
 
 </script>
 <template>
-    <div>
-        <h2>📘 Course Detail: {{ id }}</h2>
+    <aside class="sidebar">
+        <router-view name="sidebar" />
+    </aside>
+    <main class="main-content">
+        <div>
+            <h2>📘 Course Detail: {{ id }}</h2>
 
-        <div v-if="loading"><div class="loader"></div></div>
-        <div v-if="error"> {{ error }}</div>
+            <div v-if="loading">
+                <div class="loader"></div>
+            </div>
+            <div v-if="error"> {{ error }}</div>
 
-        <div v-else>
-            <nav>
-                <RouterLink :to="`/courses/${id}`">Overview</RouterLink> |
-                <RouterLink :to="`/courses/${id}/lessons`">Lessons</RouterLink>
-            </nav>
+            <div v-else>
+                <nav>
+                    <RouterLink :to="`/courses/${id}`">Overview</RouterLink> |
+                    <RouterLink :to="`/courses/${id}/lessons`">Lessons</RouterLink>
+                </nav>
+            </div>
+
+            <router-view name="default" v-if="course" :course="course" /> <!-- Nested content renders here -->
         </div>
-
-        <router-view v-if="course" :course="course" /> <!-- Nested content renders here -->
-    </div>
+    </main>
 </template>
 
 <style scoped>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 
 import { useAuth } from "../composables/useAuth";
+import CourseSidebar from "../views/CourseSidebar.vue";
 
 const CourseLayout = () => import('../views/CourseLayout.vue');
 const CourseOverview = () => import('../views/CourseOverview.vue');
@@ -35,12 +36,18 @@ const routes: Array<RouteRecordRaw> = [
             {
                 path: '',
                 name: 'CourseOverview',
-                component: CourseOverview
+                components: {
+                    default: CourseOverview,
+                    sidebar: CourseSidebar
+                }
             },
             {
                 path: 'lessons',
                 name: 'CourseLessons',
-                component: CourseLessons,
+                component: {
+                    default: CourseLessons,
+                    sidebar: CourseSidebar
+                },
                 // beforeEnter: (to, from, next) => {
                 //     console.log({ to, from, next });
 
