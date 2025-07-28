@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
-import About from "../views/About.vue";
-import NotFound from "../views/NotFound.vue";
-import Courses from "../views/Courses.vue";
-import CourseLayout from "../views/CourseLayout.vue";
-import CourseOverview from "../views/CourseOverview.vue";
-import CourseLessons from "../views/CourseLessons.vue";
+
 import { useAuth } from "../composables/useAuth";
-import LoginPage from "../views/LoginPage.vue";
+
+const CourseLayout = () => import('../views/CourseLayout.vue');
+const CourseOverview = () => import('../views/CourseOverview.vue');
+const CourseLessons = () => import('../views/CourseLessons.vue');
+const LoginPage = () => import('../views/LoginPage.vue');
+const NotFound = () => import('../views/NotFound.vue');
+const About = () => import('../views/About.vue');
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -20,11 +21,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'About',
         component: About
     },
-    {
-        path: '/courses',
-        name: 'Courses',
-        component: Courses
-    },
+    // {
+    //     path: '/courses',
+    //     name: 'Courses',
+    //     component: Courses
+    // },
     {
         path: '/courses/:id',
         name: 'CourseLayout',
