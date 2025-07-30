@@ -27,7 +27,7 @@ onMounted(() => {
 
 <template>
   Is logged in: {{ isLoggedIn }} <br>
-  Message: {{ message }} <br>
+  Message: <strong>{{ message }}</strong> <br>
   Loading: {{ isLoading }} <br>
 
   <hr>

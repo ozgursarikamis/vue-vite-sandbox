@@ -19,8 +19,12 @@ export const useMessageStore = defineStore('message', {
             this.message = 'loading...';
 
             try {
-                const response = await fetchMessagesFromServer();
-                this.message = response;
+                const userId = Math.round(Math.random() * 100) + 1;
+                const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${userId}`);
+                if(!response.ok)
+                    throw new Error('Network response was not ok');
+                const data = await response.json();
+                this.message = data.title;
             } catch (error) {
                 this.message = 'Error fetching message';
                 console.error('Error fetching message:', error);
